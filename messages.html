@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages - Chat App</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    nav.navbar {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav .navbar-logo a {
+      color: white;
+      font-size: 24px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav .navbar-menu a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+    }
+
+    nav .navbar-profile {
+      position: relative;
+    }
+
+    nav .profile-dropdown {
+      cursor: pointer;
+      color: white;
+    }
+
+    nav .profile-dropdown .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+      padding: 10px;
+      z-index: 1;
+    }
+
+    nav .profile-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    nav .profile-dropdown .dropdown-content a {
+      padding: 8px 15px;
+      text-decoration: none;
+      color: #333;
+    }
+
+    nav .profile-dropdown .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      display: flex;
+      flex: 1;
+    }
+
+    .contacts {
+      width: 250px;
+      background-color: #fff;
+      border-right: 1px solid #ddd;
+      padding: 10px;
+      overflow-y: auto;
+    }
+
+    .contact {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      cursor: pointer;
+    }
+
+    .contact:hover {
+      background-color: #f0f0f0;
+    }
+
+    .contact .name {
+      font-weight: bold;
+    }
+
+    .contact .message {
+      font-size: 14px;
+      color: #888;
+    }
+
+    .contact .time {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .chat-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background-color: #fff;
+      padding: 20px;
+      height: 100%;
+      overflow-y: auto;
+    }
+
+    .chat-header {
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .messages {
+      flex: 1;
+      margin-bottom: 10px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message .sender {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .message .text {
+      padding: 8px;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      max-width: 60%;
+    }
+
+    .message.sent .text {
+      background-color: #0f6ef7;
+      color: white;
+      align-self: flex-end;
+    }
+
+    .message.received .text {
+      background-color: #e2e2e2;
+      color: #333;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .input-container input {
+      flex: 1;
+      padding: 10px;
+      margin-right: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    .input-container button {
+      background-color: #0f6ef7;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .input-container button:hover {
+      background-color: #0b5ed7;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-logo">
+      <a href="dashboard.html">FunEarn</a>
+    </div>
+    <div class="navbar-menu">
+      <a href="dashboard.html" class="active">Dashboard</a>
+      <a href="jobs.html">Find Jobs</a>
+      <a href="post-job.html">Post a Job</a>
+      <a href="messages.html">Messages</a>
+    </div>
+    <div class="navbar-profile">
+      <div class="profile-dropdown">
+        <span id="user-name">Loading...</span>
+        <div class="dropdown-content">
+          <a href="profile.html">My Profile</a>
+          <a href="settings.html">Settings</a>
+          <a href="wallet.html">Wallet</a>
+          <a href="#" id="logout-btn">Logout</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <!-- Contacts List -->
+    <div class="contacts">
+      <div class="contact" data-contact="John">
+        <span class="name">John Doe</span>
+        <div class="message">Last message here...</div>
+        <div class="time">12:45 PM</div>
+      </div>
+      <div class="contact" data-contact="Alice">
+        <span class="name">Alice Smith</span>
+        <div class="message">Last message here...</div>
+        <div class="time">12:30 PM</div>
+      </div>
+      <div class="contact" data-contact="Bob">
+        <span class="name">Bob Johnson</span>
+        <div class="message">Last message here...</div>
+        <div class="time">11:20 AM</div>
+      </div>
+    </div>
+
+    <!-- Chat Box -->
+    <div class="chat-box">
+      <div class="chat-header" id="chatHeader">Select a contact to start chatting</div>
+      <div class="messages" id="messages"></div>
+
+      <!-- Input -->
+      <div class="input-container">
+        <input type="text" id="messageInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Contact & Message Data
+    let currentContact = '';
+    const messagesData = JSON.parse(localStorage.getItem('messages')) || {};
+
+    // Load Messages for Selected Contact
+    function loadMessages(contact) {
+      currentContact = contact;
+      document.getElementById('chatHeader').textContent = `Chat with ${contact}`;
+      const messageContainer = document.getElementById('messages');
+      messageContainer.innerHTML = ''; // Clear previous messages
+
+      const messages = messagesData[contact] || [];
+      messages.forEach(msg => {
+        const msgElement = document.createElement('div');
+        msgElement.classList.add('message', msg.type);
+        msgElement.innerHTML = `
+          <span class="sender">${msg.sender}</span>
+          <span class="text">${msg.text}</span>
+        `;
+        messageContainer.appendChild(msgElement);
+      });
+    }
+
+    // Handle Sending Messages
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const messageText = messageInput.value.trim();
+
+      if (!messageText || !currentContact) return;
+
+      const newMessage = {
+        sender: 'You',
+        text: messageText,
+        type: 'sent',
+        time: new Date().toLocaleTimeString(),
+      };
+
+      // Save to LocalStorage
+      if (!messagesData[currentContact]) messagesData[currentContact] = [];
+      messagesData[currentContact].push(newMessage);
+      localStorage.setItem('messages', JSON.stringify(messagesData));
+
+      loadMessages(currentContact);
+      messageInput.value = '';
+
+      // Update the last message and time in the contact list
+      const contactElement = document.querySelector(`.contact[data-contact="${currentContact}"]`);
+      const lastMessage = contactElement.querySelector('.message');
+      const time = contactElement.querySelector('.time');
+      lastMessage.textContent = messageText;
+      time.textContent = newMessage.time;
+    }
+
+    // Add Event Listeners to Contacts
+    const contacts = document.querySelectorAll('.contact');
+    contacts.forEach(contact => {
+      contact.addEventListener('click', () => loadMessages(contact.dataset.contact));
+    });
+  </script>
+
+</body>
+</html>

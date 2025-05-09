@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceHub - Your Talents, Your Terms</title>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #4338CA;
+            --secondary: #10B981;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+            --danger: #EF4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .logo-icon {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            border: none;
+        }
+        
+        .btn-login {
+            background-color: transparent;
+            color: var(--primary);
+            margin-right: 1rem;
+            border: 1px solid var(--primary);
+        }
+        
+        .btn-login:hover {
+            background-color: rgba(79, 70, 229, 0.1);
+        }
+        
+        .btn-signup {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-signup:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .hero {
+            padding-top: 120px;
+            padding-bottom: 5rem;
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .btn-lg {
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+        }
+
+        .btn-cta {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-cta:hover {
+            background-color: #0EA271;
+        }
+        
+        .features {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: var(--gray);
+        }
+        
+        .audiences {
+            padding: 5rem 0;
+            background-color: #F3F4F6;
+        }
+        
+        .audience-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+        
+        .audience-tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .audience-tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .audience-content {
+            display: none;
+        }
+        
+        .audience-content.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .audience-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .audience-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        .audience-card p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonials {
+            padding: 5rem 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            margin-right: 1rem;
+            overflow: hidden;
+        }
+        
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .author-info p {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+        
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-content p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-logo {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .footer-description {
+            color: #D1D5DB;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-links h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #D1D5DB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #D1D5DB;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 0.5rem;
+            max-width: 500px;
+            width: 90%;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        .modal-header {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light-gray);
+            border-radius: 0.375rem;
+            font-size: 1rem;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .form-switch {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .form-switch a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        .btn-form {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span class="logo-icon"></span> FunEARN
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#audiences">For You</a></li>
+                    <li><a href="#testimonials">Success Stories</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+                
+                <div class="auth-buttons">
+                    <a href="login.html" class="btn btn-login">Log In</a>
+                    <a href="signup.html" class="btn btn-login">Sign Up</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Find Work. Build Skills. Earn Money.</h1>
+                <p>The freelancing platform designed for everyone, from teenagers getting started to seasoned professionals seeking new opportunities.</p>
+                
+                <div class="hero-buttons">
+                    <a href="signup.html" class="btn btn-lg btn-cta">Start Your Freelance Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose FreelanceHub?</h2>
+                <p>Our platform is designed to make freelancing accessible, secure, and profitable for everyone.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Find Perfect Matches</h3>
+                    <p>Our AI-powered matching system connects you with projects that fit your skills, experience level, and availability.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Secure Payments</h3>
+                    <p>Get paid on time, every time with our secure payment protection system and milestone-based releases.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Skill Development</h3>
+                    <p>Access free courses, certifications, and mentorship to grow your skills and increase your earning potential.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>Supportive Community</h3>
+                    <p>Join a community of like-minded freelancers to share tips, collaborate on projects, and grow together.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Work Anywhere</h3>
+                    <p>Manage your freelance business from anywhere with our mobile-friendly platform and dedicated app.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>No Commissions</h3>
+                    <p>Keep more of what you earn with our zero-commission model. Just a small monthly subscription for unlimited access.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Audience Tabs Section -->
+    <section class="audiences" id="audiences">
+        <div class="container">
+            <div class="section-title">
+                <h2>FreelanceHub Is For Everyone</h2>
+                <p>Whether you're just starting out or you're a seasoned pro, we have the tools and opportunities you need.</p>
+            </div>
+            
+            <div class="audience-tabs">
+                <div class="audience-tab active" data-tab="teenagers">For Teenagers</div>
+                <div class="audience-tab" data-tab="students">For Students</div>
+                <div class="audience-tab" data-tab="professionals">For Professionals</div>
+            </div>
+            
+            <div class="audience-content active" id="teenagers-content">
+                <div class="audience-card">
+                    <h3>Start Your Career Early</h3>
+                    <p>FreelanceHub provides a safe environment for teenagers to explore their talents, build a portfolio, and earn money while still in school. Our age-appropriate projects and parent-approved safety measures ensure a positive experience.</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+            
+            <div class="audience-content" id="students-content">
+                <div class="audience-card">
+                    <h3>Balance Studies & Work</h3>
+                    <p>Perfect for college students looking to apply their knowledge, earn extra income, and build professional experience. Our flexible projects fit around your class schedule, and you can even find opportunities related to your major.</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+            
+            <div class="audience-content" id="professionals-content">
+                <div class="audience-card">
+                    <h3>Elevate Your Freelance Career</h3>
+                    <p>For established professionals, FreelanceHub offers premium clients, higher-paying projects, and advanced tools to manage your freelance business. Stand out with our verified professional status and access exclusive opportunities.</p>
+                    <button class="btn btn-primary">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from freelancers who have transformed their careers with FreelanceHub.</p>
+            </div>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "I started on FreelanceHub when I was 16, designing logos for small businesses. Now at 19, I'm earning enough to pay for college while building my design portfolio. The teen-friendly environment was perfect for getting started safely."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg" alt="Alex's profile picture">
+                        </div>
+                        <div class="author-info">
+                            <h4>Alex J.</h4>
+                            <p>Graphic Designer, Age 19</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "As a computer science student, FreelanceHub helped me apply what I was learning in real projects. I've built a strong client base doing web development, and the flexible hours mean I can prioritize my studies when needed."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://th.bing.com/th/id/OIP.3CCCEafF0diBNsXpMzJI2gAAAA?cb=iwp1&w=400&h=400&rs=1&pid=ImgDetMain" alt="Mia's profile picture">
+                        </div>
+                        <div class="author-info">
+                            <h4>Mia T.</h4>
+                            <p>Web Developer, College Junior</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "After 10 years in corporate marketing, I switched to freelancing through FreelanceHub. The professional verification process helped me stand out, and I quickly found high-quality clients. I now earn more while working fewer hours."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://images.pexels.com/photos/14391922/pexels-photo-14391922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="David's profile picture">
+                        </div>
+                        <div class="author-info">
+                            <h4>David M.</h4>
+                            <p>Marketing Consultant, 5 years on platform</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="features">
+        <div class="container">
+          <div class="section-title">
+            <h2>Affordable Pricing</h2>
+            <p>Pick the plan that suits your freelance journey best.</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <h3>Starter</h3>
+              <p><strong>$0/month</strong></p>
+              <ul>
+                <li>5 Project Applications</li>
+                <li>Community Access</li>
+                <li>Email Support</li>
+              </ul>
+              <button class="btn btn-primary">Get Started</button>
+            </div>
+            <div class="feature-card">
+              <h3>Pro</h3>
+              <p><strong>$15/month</strong></p>
+              <ul>
+                <li>Unlimited Applications</li>
+                <li>Direct Messaging</li>
+                <li>Premium Support</li>
+              </ul>
+              <button class="btn btn-primary">Upgrade Now</button>
+            </div>
+            <div class="feature-card">
+              <h3>Elite</h3>
+              <p><strong>$29/month</strong></p>
+              <ul>
+                <li>Verified Badge</li>
+                <li>Priority Matching</li>
+                <li>1-on-1 Mentorship</li>
+              </ul>
+              <button class="btn btn-primary">Join Elite</button>
+            </div>
+          </div>
+        </div>
+    </section>
+    
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Freelance Journey?</h2>
+                <p>Join thousands of freelancers who are building their careers, developing their skills, and earning their way with FreelanceHub.</p>
+                <button class="btn btn-lg btn-cta" id="cta-signup-btn">Create Your Free Account</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo"> funEARN</div>
+                    <p class="footer-description">The freelancing platform that grows with you, from your first gig to your full-time career.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📱</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">📮</a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Platform</h3>
+                    <ul>
+                        <li><a href="#">How it Works</a></li>
+                        <li><a href="#">Browse Projects</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>For Freelancers</h3>
+                    <ul>
+                        <li><a href="#">Find Work</a></li>
+                        <li><a href="#">Skill Development</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Freelancer Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety & Trust</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 FreelanceHub. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2>Welcome Back!</h2>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Your password" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-form">Log In</button>
+                <div class="form-footer">
+                    <div class="form-switch">
+                        Don't have an account? <a href="signup.html" id="switch-to-signup">Sign up</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Signup Modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-content">
+            <button class="close-modal">&times;</button>
+            <div class="modal-header">
+                <h2>Create Your Account</h2>
+            </div>
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="signup-name">Full Name</label>
+                    <input type="text" id="signup-name" class="form-control" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" class="form-control" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" class="form-control" placeholder="Create a password" required>
+                </div>
+                <div class="form-group">
+                    <label for="signup-type">I am a:</label>
+                    <select id="signup-type" class="form-control" required>
+                        <option value="">Select an option</option>
+                        <option value="teenager">Teenager (13-17)</option>
+                        <option value="student">Student</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-form">Create Account</button>
+                <div class="form-footer">
+                    <div class="form-switch">
+                        Already have an account? <a href="#" id="switch-to-login">Log in</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.audience-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and content
+                document.querySelectorAll('.audience-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.audience-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(`${tabId}-content`).classList.add('active');
+            });
+        });
+        
+        // Modal functionality
+        const loginModal = document.getElementById('login-modal');
+        const signupModal = document.getElementById('signup-modal');
+        const loginBtn = document.getElementById('login-btn');
+        const signupBtn = document.getElementById('signup-btn');
+        const heroSignupBtn = document.getElementById('hero-signup-btn');
+        const ctaSignupBtn = document.getElementById('cta-signup-btn');
+        const switchToSignup = document.getElementById('switch-to-signup');
+        const switchToLogin = document.getElementById('switch-to-login');
+        const closeButtons = document.querySelectorAll('.close-modal');
+        
+        // Open login modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.classList.add('active');
+        });
+        
+        // Open signup modal from nav
+        signupBtn.addEventListener('click', () => {
+            signupModal.classList.add('active');
+        });
+        
+    </script>
+    <script>
+        // Open signup modal from hero section
+        heroSignupBtn.addEventListener('click', () => {
+            signupModal.classList.add('active');
+        });
+        
+        // Open signup modal from CTA section
+        ctaSignupBtn.addEventListener('click', () => {
+            signupModal.classList.add('active');
+        });
+        
+        // Switch to signup modal
+        switchToSignup.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.classList.remove('active');
+            signupModal.classList.add('active');
+        });
+        
+        // Switch to login modal
+        switchToLogin.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.classList.remove('active');
+            loginModal.classList.add('active');
+        });
+        
+        // Close modals
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                loginModal.classList.remove('active');
+                signupModal.classList.remove('active');
+            });
+        });
+        // Close modals when clicking outside of them
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal || e.target === signupModal) {
+                loginModal.classList.remove('active');
+                signupModal.classList.remove('active');
+            }
+        });
+
+        // Form submission handling 
+        document.getElementById('login-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle login logic here
+            alert('Login form submitted');
+        });
+        document.getElementById('signup-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle signup logic here
+            alert('Signup form submitted');
+        });
+        // Firebase initialization
+        const firebaseConfig = {
+            apiKey: "AIzaSyDnG1ICjcrMWDQoAOzM2QTAUpzGiQRvh60",
+            authDomain: "freelancer-7b3dd.firebaseapp.com",
+            databaseURL: "https://freelancer-7b3dd-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "freelancer-7b3dd",
+            storageBucket: "freelancer-7b3dd.appspot.com",
+            messagingSenderId: "821603326473",
+            appId: "1:821603326473:web:48c71da924ff5b293736d8",
+            measurementId: "G-02KVEZLTRE"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const functions = firebase.functions();
+        const analytics = firebase.analytics();
+        const performance = firebase.performance();
+        const remoteConfig = firebase.remoteConfig();
+        const messaging = firebase.messaging();
+        const firestore = firebase.firestore();
+        const database = firebase.database();
+    </script>
+</body>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Freelance Platform</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="site-container">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="navbar-logo">
+                <a href="dashboard.html">FunEarn</a>
+            </div>
+            <div class="navbar-menu">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="jobs.html">Find Jobs</a>
+                <a href="post-job.html">Post a Job</a>
+                <a href="messages.html">Messages</a>
+            </div>
+            <div class="navbar-profile">
+                <div class="profile-dropdown">
+                    <span id="user-name">Loading...</span>
+                    <div class="dropdown-content">
+                        <a href="profile.html">My Profile</a>
+                        <a href="profile.html">My Profile</a>
+                        <a href="profile.html">My Profile</a>
+                        <a href="profile.html">My Profile</a>
+                        <a href="settings.html">Settings</a>
+                        <a href="refer-friend.html">Refer A Friend</a>
+                        <a href="cources.html">courses</a>
+                        <a href="wallet.html">Wallet</a>
+                        <a href="#" id="logout-btn">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="welcome-section">
+                <h1>Welcome, <span id="welcome-name">Freelancer</span>!</h1>
+                <p class="status-message">Your profile is <span id="profile-status">incomplete</span>. 
+                    <a href="profile.html" id="profile-action">Complete your profile</a> to start freelancing.</p>
+            </div>
+             
+            <div id="projects-section" class="tags-section">
+                <h3>Project Tags:</h3>
+                <div class="tags-container">
+                  <div class="tag">EASY</div>
+                  <div class="tag">KYC</div>
+                  <div class="tag">NON KYC</div>
+                  <div class="tag">HIGH PAYOUT</div>
+                </div>
+              </div>
+          
+              <div class="projects-section">
+                <div class="projects-header">
+                <h3>Projects in Focus (No Skills Needed)</h3>
+                <a href="jobs.html" class="see-all">See all →</a>
+              </div>
+                
+              
+              
+                
+          
+                <div class="project-card">
+                  <div class="project-info">
+                    <h4>Digital animator</h4>
+                    <span>⏳ 20 Min</span>
+                  </div>
+                  <div class="project-action">
+                    <div class="amount">₹45</div>
+                    <a href="dream11.html" class="project-link"> 
+                      <button>→</button>
+                    </a>
+                  </div>
+                </div>
+          
+                <div class="project-card">
+                  <div class="project-info">
+                    <h4>Paytm Money</h4>
+                    <span>⏳ 2 Min</span>
+                  </div>
+                  <div class="project-action">
+                    <div class="amount">₹200</div>
+                    <a href="paytm.html" class="project-link"> 
+                      <button>→</button>
+                    </a>
+                  </div>
+                </div>
+          
+                <div class="project-card">
+                  <div class="project-info">
+                    <h4>Dream 11</h4>
+                    <span>⏳ 2 Min</span>
+                  </div>
+                  <div class="project-action">
+                    <div class="amount">₹10</div>
+                    <a href="dream11.html" class="project-link"> 
+                     <button>→</button>
+                    </a>
+                  </div>
+                </div>
+          
+                <div class="project-card">
+                  <div class="project-info">
+                    <h4>Tide Account Open</h4>
+                    <span>⏳ 20 min</span>
+                  </div>
+                  <div class="project-action">
+                    <div class="amount">₹135</div>
+                    <a href="tide.html" class="project-link">  
+                      <button>→</button>
+                    </a>
+                  </div>
+                </div>
+          
+            <!-- Dashboard Tabs -->
+            <div class="dashboard-tabs">
+                <button class="tab-btn active" data-tab="overview">Overview</button>
+                <button class="tab-btn" data-tab="jobs">My Jobs</button>
+                <button class="tab-btn" data-tab="proposals">My Proposals</button>
+                <button class="tab-btn" data-tab="earnings">Earnings</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Overview Tab -->
+                <div class="tab-pane active" id="overview">
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <div class="stat-value" id="active-jobs">0</div>
+                            <div class="stat-label">Active Jobs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="proposals-sent">0</div>
+                            <div class="stat-label">Proposals Sent</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="completed-jobs">0</div>
+                            <div class="stat-label">Completed Jobs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value" id="total-earnings">$0</div>
+                            <div class="stat-label">Total Earnings</div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-cards">
+                        <div class="dashboard-card">
+                            <h2>Recommended Jobs</h2>
+                            <div id="recommended-jobs" class="job-list">
+                                <p class="no-data-message">Complete your profile to see recommended jobs</p>
+                            </div>
+                            <a href="jobs.html" class="card-link">Browse All Jobs</a>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h2>Recent Activity</h2>
+                            <div id="activity-list" class="activity-list">
+                                <p class="no-activity">No recent activity to display.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Jobs Tab -->
+                <div class="tab-pane" id="jobs">
+                    <div class="section-header">
+                        <h2>My Jobs</h2>
+                        <div class="section-filters">
+                            <select id="job-filter">
+                                <option value="all">All Jobs</option>
+                                <option value="active">Active</option>
+                                <option value="completed">Completed</option>
+                                <option value="posted">Posted by Me</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="my-jobs" class="job-list">
+                        <p class="no-data-message">You don't have any jobs yet</p>
+                    </div>
+                </div>
+
+                <!-- Proposals Tab -->
+                <div class="tab-pane" id="proposals">
+                    <div class="section-header">
+                        <h2>My Proposals</h2>
+                        <div class="section-filters">
+                            <select id="proposal-filter">
+                                <option value="all">All Proposals</option>
+                                <option value="pending">Pending</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="rejected">Rejected</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="my-proposals" class="proposal-list">
+                        <p class="no-data-message">You haven't sent any proposals yet</p>
+                    </div>
+                </div>
+
+                <!-- Earnings Tab -->
+                <div class="tab-pane" id="earnings">
+                    <div class="section-header">
+                        <h2>Earnings</h2>
+                        <div class="section-filters">
+                            <select id="earnings-period">
+                                <option value="all-time">All Time</option>
+                                <option value="this-month">This Month</option>
+                                <option value="last-month">Last Month</option>
+                                <option value="this-year">This Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="earnings-overview">
+                        <div class="earnings-chart">
+                            <p>Earnings chart will appear here</p>
+                        </div>
+                        <div class="earnings-details">
+                            <div class="earnings-stat">
+                                <div class="stat-label">Total Earned</div>
+                                <div class="stat-value" id="total-earned">$0.00</div>
+                            </div>
+                            <div class="earnings-stat">
+                                <div class="stat-label">Pending Clearance</div>
+                                <div class="stat-value" id="pending-clearance">$0.00</div>
+                            </div>
+                            <div class="earnings-stat">
+                                <div class="stat-label">Available for Withdrawal</div>
+                                <div class="stat-value" id="available-withdrawal">$0.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="wallet.html" class="wallet-card">Withdraw Earnings</a>
+                    </div>
+                    <div class="payment-history">
+                        <h3>Payment History</h3>
+                        <div id="payment-list" class="payment-list">
+                            <p class="no-data-message">No payment history available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 FreelanceHub. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="about.html">About</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification System -->
+    <div id="notification-container" class="notification-container"></div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore-compat.js"></script>
+    
+    <!-- Your Firebase config -->
+    <script src="firebase-config.js"></script>
+    
+    <!-- Your custom JS -->
+    <script src="dashboard.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html>

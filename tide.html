@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tide Account Open - Project Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #16232e;
+      color: #fff;
+      font-family: 'Poppins', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #223046;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.19);
+      padding-bottom: 32px;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 24px 32px 0 32px;
+      border-radius: 20px 20px 0 0;
+      background: #223046;
+    }
+    .back-arrow {
+      font-size: 30px;
+      color: #fff;
+      margin-right: 18px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.2s;
+    }
+    .back-arrow:hover {
+      color: #00ff90;
+    }
+    .title {
+      font-size: 26px;
+      font-weight: 600;
+      flex: 1;
+    }
+    
+    .subtitle {
+      color: #00ff90;
+      font-size: 17px;
+      margin: 24px 32px 0 32px;
+    }
+    .project-card {
+      background: #25354a;
+      margin: 24px 32px 0 32px;
+      border-radius: 16px;
+      padding: 24px 24px 18px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .project-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    
+    }
+    .project-title {
+      font-size: 24px;
+      font-weight: 700;
+      padding-left:32px;
+      
+    }
+    .share-btn {
+      background: none;
+      border: none;
+      color: #00ff90;
+      font-size: 24px;
+      cursor: pointer;
+    }
+    .completed {
+      color: #20e4a5;
+      background: #2c4232;
+      border-radius: 13px;
+      display: inline-block;
+      padding: 5px 16px;
+      font-size: 16px;
+      margin: 12px 0 8px 0;
+      font-weight: 500;
+    }
+    .desc-label {
+      font-size: 15px;
+      color: #b0e4d3;
+      margin-top: 14px;
+      margin-bottom: 6px;
+    }
+    .desc {
+      font-size: 15px;
+      color: #c7e1e6;
+      margin-bottom: 8px;
+    }
+    .project-link {
+      color: #00cfff;
+      text-decoration: underline;
+      font-size: 15px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .project-image {
+      width: 100%;
+      max-width: 260px;
+      display: block;
+      margin: 20px auto 10px auto;
+      background: #fff;
+      border-radius: 13px;
+      padding: 16px 0;
+    }
+    .info-note {
+      background: #1a2738;
+      color: #f7e8a3;
+      border-radius: 12px;
+      padding: 15px 18px;
+      margin: 18px 0 0 0;
+      font-size: 15px;
+      font-weight: 500;
+    }
+    .steps-card {
+      background: #1b2637;
+      margin: 32px 32px 0 32px;
+      border-radius: 16px;
+      padding: 24px 24px 18px 24px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+    }
+    .steps-title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .steps-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+    .steps-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: step;
+    }
+    .steps-list li {
+      margin-bottom: 16px;
+      font-size: 15.5px;
+      display: flex;
+      align-items: flex-start;
+      font-weight: 500;
+    }
+    .steps-list li::before {
+      content: counter(step);
+      counter-increment: step;
+      border: 2px dashed #00ff90;
+      color: #00ff90;
+      border-radius: 50%;
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+      margin-right: 16px;
+      font-size: 17px;
+      margin-top: -3px;
+    }
+    .start-section {
+      margin: 12px 32px 0 0px;
+    }
+    .start-btn {
+      width: 130%;
+      background: #00ff90;
+      color: #003366;
+      border: none;
+      border-radius: 7.5px;
+      padding: 10px 0 10px 0;
+      font-size: 21px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,255,144,0.13);
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .submit-btn {
+      width: 103.5%;
+      background: hwb(49 0% 0%);
+      color: #003366;
+      border: none;
+      border-radius: 7.5px;
+      padding: 10px 0 10px 0;
+      font-size: 21px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,255,144,0.13);
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .submit-btn span {
+      font-size: 17px;
+      font-weight: 500;
+      margin-top: 3px;
+      color: #003366;
+      opacity: 0.9;
+      background: #00ff90;
+      border-radius: 18px;
+      padding: 3px 22px;
+      margin-bottom: 7px;
+    }
+    @media (max-width: 700px) {
+      .container, .project-card, .steps-card, .start-section {
+        margin-left: 0;
+        margin-right: 0;
+        border-radius: 0;
+        max-width: 100vw;
+      }
+    }
+    p{padding-left:32px;
+
+    }
+    h4{
+        padding-left:32px;;
+    }
+    a{
+        padding-left:32px;
+    }
+    .overlay {
+      display: none; /* hidden by default */
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 10;
+    }
+
+    /* Popup container */
+    .popup {
+      background: hsl(0, 0%, 3%);
+      width: 300px;
+      padding: 20px;
+      margin: 100px auto;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .popup h3 {
+      margin-top: 0;
+    }
+
+    .popup input[type="file"],
+    .popup input[type="text"] {
+      width: 95%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    .popup button {
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .popup button:hover {
+      background-color: #218838;
+    }
+  </style>
+    
+    
+    
+</head>
+<body>
+  <div class="topbar">
+    <a href="dashboard.html" class="back-arrow">&#8592;</a>
+    <span class="title">Project details</span>
+    
+  </div>
+  <div class="container">
+    <div class="header-section">
+      
+      <div class="project-title">Tide Account Open</div>
+      <div class="completed">🎉 1395 teenlancers completed this project</div>
+    </div>
+    <div class="desc-section">
+      <h4>Project Description:</h4>
+      <p>REGISTER &rarr; OPEN ACCOUNT &rarr; Complete KYC &rarr; Deposit</p>
+      <a href="https://www.tide.co" target="_blank">TIDE Link</a>
+      <img src="https://play-lh.googleusercontent.com/KiRTjogQ3wgBxcK7uAVDP9j329XSYbyTfcvZ-LqbQJFatw8LG5QNZrYR1RiCSOIDyQ0" alt="Tide Logo" class="tide-logo">
+      <div class="info-note">
+        Deposit of Rs. 50 is <b>MUST</b>. Complete the project within 5 days of application. Intent Date to Approval Date window is 5 DAYS.
+      </div>
+    </div>
+    <div class="steps-section">
+      <div class="steps-card">
+        <div class="steps-title">Steps</div>
+        <ol class="steps-list">
+          <li>Download the Tide app and open an account. 
+          <div class="start-section">
+            <a href="https://play.google.com/store/apps/details?id=co.tide.tideplatform.in&hl=en-US">
+              <button class="start-btn">Click Here To Download Tide</button>
+            </a>
+          </div>
+          <li>Enter the referral code  <b> RT104</b>.</li>
+          <li>Complete the video KYC verification process.</li>
+          <li>Get your account <b>OPENED</b>.</li>
+          <li>Deposit Rs.50 once account is opened.</li>
+          <li>Done</li>
+        </ol>
+      </div>
+    </div>
+    <div class="start-section">
+        <button onclick="openPopup()" class="submit-btn"> SUBMIT </button>
+
+        <div class="overlay" id="popupOverlay">
+          <div class="popup">
+            <h3>Upload Screenshot & Referral Code</h3>
+            <input type="file" id="screenshot" accept="image/*">
+            <input type="text" id="referral" placeholder="Enter referral code">
+            <button onclick="closePopup()">Submit</button>
+          </div>
+        </div>
+      
+        <script>
+          function openPopup() {
+            document.getElementById('popupOverlay').style.display = 'block';
+          }
+      
+          function closePopup() {
+            document.getElementById('popupOverlay').style.display = 'none';
+          }
+        </script>
+    </div>
+  </div>
+</body>
+</html>

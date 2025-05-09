@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refer a Friend</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .referral-box {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #referralCode {
+            display: block;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        button {
+            margin: 10px;
+            padding: 12px 20px;
+            border: none;
+            background: #4CAF50;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Refer a Friend</h1>
+        <p>Share your referral code and invite your friends!</p>
+
+        <div class="referral-box">
+            <span id="referralCode">Loading...</span>
+            <button id="generateBtn">Generate New Code</button>
+            <button id="copyBtn">Copy Code</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to generate a random referral code
+        function generateCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let code = '';
+            for (let i = 0; i < 8; i++) {
+                code += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            document.getElementById('referralCode').textContent = code;
+        }
+
+        // Auto-generate when page loads
+        window.onload = generateCode;
+
+        // Function to copy the referral code to the clipboard
+        function copyCode() {
+            const code = document.getElementById('referralCode').textContent;
+
+            if (code === 'Loading...') {
+                alert('Please generate a referral code first.');
+                return;
+            }
+
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Referral code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+                alert('Failed to copy the code.');
+            });
+        }
+
+        // Add event listeners
+        document.getElementById('generateBtn').addEventListener('click', generateCode);
+        document.getElementById('copyBtn').addEventListener('click', copyCode);
+    </script>
+    
+</body>
+</html>

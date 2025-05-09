@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Receive Payment - Razorpay Style</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #f4f4f4;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .payout-container {
+      background-color: #fff;
+      width: 360px;
+      padding: 25px 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .header img {
+      height: 30px;
+    }
+
+    .amount {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2d2d2d;
+    }
+
+    .job-details {
+      margin-bottom: 20px;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .bank-details {
+      background: #f9f9f9;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .bank-details p {
+      margin: 6px 0;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .withdraw-button {
+      width: 100%;
+      background-color: #0f6ef7;
+      color: #fff;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .withdraw-button:hover {
+      background-color: #0b5ed7;
+    }
+
+    .note {
+      margin-top: 15px;
+      font-size: 12px;
+      color: #999;
+      text-align: center;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      z-index: 10;
+      display: none;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #ccc;
+      border-top-color: #0f6ef7;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .checkmark {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      border: 4px solid #28a745;
+      position: relative;
+      animation: pop 0.3s ease-out;
+    }
+
+    .checkmark::after {
+      content: "";
+      position: absolute;
+      left: 25px;
+      top: 15px;
+      width: 16px;
+      height: 20px;
+      border: solid #28a745;
+      border-width: 0 4px 4px 0;
+      transform: rotate(45deg);
+      animation: draw 0.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes draw {
+      0% { height: 0; opacity: 0; }
+      100% { height: 32px; opacity: 1; }
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0.5); }
+      100% { transform: scale(1); }
+    }
+
+    .success-text {
+      margin-top: 10px;
+      color: #28a745;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="payout-container">
+    <div class="overlay" id="overlay">
+      <div class="spinner" id="spinner"></div>
+      <div class="checkmark" id="checkmark" style="display: none;"></div>
+      <div class="success-text" id="successText" style="display: none;">$0 Transferred</div>
+    </div>
+
+    <div class="header">
+      <img src="https://www.freelogovectors.net/wp-content/uploads/2020/11/razorpay-logo-768x163.png" alt="Razorpay Logo">
+      <div class="amount">$0</div>
+    </div>
+
+    <div class="job-details">
+      Payment for: <strong>Build Portfolio Website</strong><br>
+      Job ID: <code>#JOB2025-3221</code>
+    </div>
+
+    <div class="bank-details">
+      <p><strong>Bank Account:</strong> HDFC Bank</p>
+      <p><strong>Account Number:</strong> XXXX-XXXX-1245</p>
+      <p><strong>IFSC:</strong> HDFC0001234</p>
+    </div>
+
+    <button class="withdraw-button" onclick="startWithdraw()">Withdraw to Bank</button>
+
+    <div class="note">This is a mock prototype. No real money is transferred.</div>
+  </div>
+
+  <script>
+    function startWithdraw() {
+      const overlay = document.getElementById("overlay");
+      const spinner = document.getElementById("spinner");
+      const checkmark = document.getElementById("checkmark");
+      const successText = document.getElementById("successText");
+
+      overlay.style.display = "flex";
+      spinner.style.display = "block";
+      checkmark.style.display = "center";
+      successText.style.display = "Checkout Successfull!";
+
+      setTimeout(() => {
+        spinner.style.display = "none";
+        checkmark.style.display = "block";
+        successText.style.display = "block";
+      }, 2000); // Simulate 2-second processing
+    }
+  </script>
+
+</body>
+</html>

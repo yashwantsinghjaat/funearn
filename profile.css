@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+  }
+  
+  .profile-container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .profile-header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #121212;
+    color: white;
+  }
+  
+  .profile-pic img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid white;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  .user-name {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  
+  .user-bio {
+    font-size: 16px;
+  }
+  
+  .profile-details {
+    padding: 30px 20px;
+  }
+  
+  .profile-details h2 {
+    margin-bottom: 10px;
+    color: #007BFF;
+    font-size: 22px;
+  }
+  
+  .profile-details p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  .profile-details ul {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  
+  .profile-details ul li {
+    margin-bottom: 10px;
+  }
+  
+  .skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skills span {
+    background-color: #151616;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+  }
+  
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .profile-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  
+  .profile h6 {
+    margin: 0 10px 0 0;
+    font-size: 18px;
+    color: #fff;
+  }
+  
+  .profile img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .update-button {
+    padding: 6px 8px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .update-button:hover {
+    background-color: #111111;
+  }
+  #bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; /* Ensures the video stays behind your content */
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  .skills span {
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 5px #eef0f0, 0 0 10px #e4e7e7, 0 0 20px #f1f5f5, 0 0 40px #e3e9e9;
+  }
+  .skills span:hover {
+    color: #00fff7;
+    text-shadow: 0 0 5px #00fff7, 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 40px #00fff7;
+    box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 30px #00fff7, 0 0 50px #00fff7;
+    transform: scale(1.1);
+  }
+  @keyframes rotateNeon {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  .update-button {
+    padding: 6px 18px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-shadow: 0 0 5px #00fff7, 0 0 10px #00fff7, 0 0 20px #00fff7;
+    border: none;
+    position: relative;
+    z-index: 1;
+    
+  }
+  
+  .update-button:hover {
+    color: #00fff7;
+    background: #111;
+    text-shadow: 0 0 5px #00fff7, 0 0 10px #00fff7, 0 0 20px #00fff7;
+    box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7, 0 0 30px #00fff7, 0 0 50px #00fff7;
+    transform: scale(1.08);
+  }
+  .p{
+    font-weight: bold;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  }
+  
+  
+  
+    

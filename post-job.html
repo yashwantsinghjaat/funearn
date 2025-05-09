@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Post a Job - FunEarn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    /* Navbar Styling */
+    .site-container {
+      width: 100%;
+    }
+
+    .navbar {
+      background-color: #007bff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: white;
+    }
+
+    .navbar-logo a {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-menu {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .navbar-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem;
+      border-radius: 4px;
+    }
+
+    .navbar-menu a:hover,
+    .navbar-menu a.active {
+      background-color: #0056b3;
+    }
+
+    .navbar-profile {
+      position: relative;
+    }
+
+    .profile-dropdown {
+      cursor: pointer;
+      padding: 0.5rem;
+      background-color: #0056b3;
+      border-radius: 4px;
+    }
+
+    .profile-dropdown:hover {
+      background-color: #003f8b;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #fff;
+      color: #333;
+      border-radius: 4px;
+      top: 100%;
+      right: 0;
+      min-width: 150px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .profile-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a {
+      padding: 0.5rem;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f0f0f0;
+    }
+
+    /* Form Styling */
+    main {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      margin-top: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    form label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    form input, form textarea, form select {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    form button {
+      margin-top: 1.5rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 0.7rem;
+      width: 100%;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-container">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-logo">
+        <a href="dashboard.html">FunEarn</a>
+      </div>
+      <div class="navbar-menu">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="jobs.html">Find Jobs</a>
+        <a href="post-job.html" class="active">Post a Job</a>
+        <a href="messages.html">Messages</a>
+      </div>
+      <div class="navbar-profile">
+        <div class="profile-dropdown">
+          <span id="user-name">Loading...</span>
+          <div class="dropdown-content">
+            <a href="profile.html">My Profile</a>
+            <a href="settings.html">Settings</a>
+            <a href="#" id="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <h2>Post a New Job</h2>
+    <form id="jobForm">
+      <label for="title">Job Title</label>
+      <input type="text" id="title" name="title" required>
+
+      <label for="description">Job Description</label>
+      <textarea id="description" name="description" rows="4" required></textarea>
+
+      <label for="skills">Required Skills (comma separated)</label>
+      <input type="text" id="skills" name="skills" required>
+
+      <label for="budget">Budget (in USD)</label>
+      <input type="number" id="budget" name="budget" required>
+
+      <label for="duration">Duration</label>
+      <select id="duration" name="duration" required>
+        <option value="">Select duration</option>
+        <option value="1 day">1 Day</option>
+        <option value="1 week">1 Week</option>
+        <option value="1 month">1 Month</option>
+        <option value="Flexible">Flexible</option>
+      </select>
+
+      <button type="submit">Submit Job</button>
+    </form>
+  </main>
+
+  <script>
+    // Fake user name loader
+    document.getElementById('user-name').innerText = "John Doe";
+  
+    // Handle job form submission
+    document.getElementById("jobForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+  
+      // Collect job data
+      const job = {
+        title: document.getElementById("title").value,
+        description: document.getElementById("description").value,
+        skills: document.getElementById("skills").value,
+        budget: document.getElementById("budget").value,
+        duration: document.getElementById("duration").value,
+        postedAt: new Date().toLocaleString()
+      };
+  
+      // Get existing jobs or empty array
+      const existingJobs = JSON.parse(localStorage.getItem("jobs")) || [];
+      existingJobs.push(job);
+      localStorage.setItem("jobs", JSON.stringify(existingJobs));
+  
+      alert(`Job "${job.title}" posted successfully!`);
+      this.reset();
+    });
+  
+    // Logout
+    document.getElementById("logout-btn").addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("You have been logged out.");
+    });
+  </script>
+<script src="chatbot.js"></script>
+
+</body>
+</html>

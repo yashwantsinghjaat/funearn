@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Jobs - FunEarn</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+
+    nav.navbar {
+      background: #007bff;
+      color: white;
+      padding: 1rem 2rem;
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar-logo a {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      text-decoration: none;
+    }
+
+    .navbar-menu a {
+      color: white;
+      text-decoration: none;
+      margin-right: 1rem;
+      padding: 0.5rem;
+    }
+
+    .navbar-menu a.active,
+    .navbar-menu a:hover {
+      background: #0056b3;
+      border-radius: 4px;
+    }
+
+    .navbar-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-profile {
+      position: relative;
+    }
+
+    .profile-dropdown {
+      position: relative;
+      background: #0056b3;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: white;
+      color: black;
+      top: 100%;
+      right: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      min-width: 150px;
+      border-radius: 4px;
+      z-index: 1000;
+    }
+
+    .dropdown-content a {
+      display: block;
+      padding: 0.5rem;
+      text-decoration: none;
+      color: black;
+    }
+
+    .dropdown-content a:hover {
+      background: #f0f0f0;
+    }
+
+    .profile-dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .job-card {
+      background: white;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-card h3 {
+      margin-top: 0;
+    }
+
+    .proposal-btn {
+      background: #28a745;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    .proposal-btn:hover {
+      background: #218838;
+    }
+
+    /* Proposal Modal */
+    #proposalModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1001;
+    }
+
+    #proposalModal .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 400px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    #proposalModal textarea {
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 8px;
+      resize: vertical;
+    }
+
+    #proposalModal button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #proposalModal .submit-btn {
+      background: #007bff;
+      color: white;
+    }
+
+    #proposalModal .cancel-btn {
+      background: #6c757d;
+      color: white;
+      float: right;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <a href="dashboard.html">FunEarn</a>
+      </div>
+      <div class="navbar-menu">
+        <a href="dashboard.html">Dashboard</a>
+        <a href="jobs.html" class="active">Find Jobs</a>
+        <a href="post-job.html">Post a Job</a>
+        <a href="messages.html">Messages</a>
+      </div>
+      <div class="navbar-profile">
+        <div class="profile-dropdown">
+          <span id="user-name">Loading...</span>
+          <div class="dropdown-content">
+            <a href="profile.html">My Profile</a>
+            <a href="settings.html">Settings</a>
+            <a href="#" id="logout-btn">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Job Section -->
+  <main>
+    <h2>Available Jobs</h2>
+    <div id="jobs-container"></div>
+  </main>
+
+  <!-- Proposal Modal -->
+  <div id="proposalModal">
+    <div class="modal-content">
+      <h3>Submit Proposal</h3>
+      <p id="proposalJobTitle"></p>
+      <textarea id="proposalText" rows="5" placeholder="Write your proposal here..."></textarea><br><br>
+      <button class="submit-btn" onclick="submitFinalProposal()">Submit</button>
+      <button class="cancel-btn" onclick="closeProposalModal()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    document.getElementById('user-name').innerText = "John Doe";
+
+    const jobsContainer = document.getElementById("jobs-container");
+    const jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+
+    if (jobs.length === 0) {
+      jobsContainer.innerHTML = "<p>No jobs available. Be the first to post one!</p>";
+    } else {
+      jobs.reverse().forEach((job, index) => {
+        const card = document.createElement("div");
+        card.className = "job-card";
+        card.innerHTML = `
+          <h3>${job.title}</h3>
+          <p><strong>Description:</strong> ${job.description}</p>
+          <p><strong>Skills:</strong> ${job.skills}</p>
+          <p><strong>Budget:</strong> $${job.budget}</p>
+          <p><strong>Duration:</strong> ${job.duration}</p>
+          <p><small>Posted at: ${job.postedAt}</small></p>
+          <button class="proposal-btn" onclick="submitProposal('${job.title.replace(/'/g, "\\'")}')">Submit Proposal</button>
+        `;
+        jobsContainer.appendChild(card);
+      });
+    }
+
+    let currentProposalJob = null;
+
+    function submitProposal(jobTitle) {
+      currentProposalJob = jobTitle;
+      document.getElementById("proposalJobTitle").innerText = `Job: ${jobTitle}`;
+      document.getElementById("proposalModal").style.display = "block";
+    }
+
+    function closeProposalModal() {
+      document.getElementById("proposalModal").style.display = "none";
+      document.getElementById("proposalText").value = "";
+    }
+
+    function submitFinalProposal() {
+      const proposalText = document.getElementById("proposalText").value.trim();
+      if (!proposalText) {
+        alert("Please enter your proposal before submitting.");
+        return;
+      }
+
+      alert(`Your proposal for "${currentProposalJob}" has been submitted:\n\n${proposalText}`);
+      closeProposalModal();
+    }
+
+    document.getElementById("logout-btn").addEventListener("click", function(e) {
+      e.preventDefault();
+      alert("You have been logged out.");
+    });
+  </script>
+  <script src="FreelanceChatbot.js"></script>
+</body>
+</html>

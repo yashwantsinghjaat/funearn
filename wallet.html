@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Wallet</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
+      margin: 0;
+      position: relative;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    /* Background video styles */
+    .bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 100vw;
+      min-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      opacity: 0.25;
+      pointer-events: none; 
+    }
+    h1 {
+      color: #00ff90;
+      margin-bottom: 20px;
+    }
+    .wallet-summary {
+      background-color: #2c2c2c;
+      padding: 30px;
+      border-radius: 15px;
+      margin-bottom: 40px;
+      position: relative;
+      z-index: 1;
+    }
+    .wallet-summary h2 {
+      font-size: 28px;
+    }
+    .wallet-summary p {
+      font-size: 18px;
+      color: #ccc;
+    }
+    h2 {
+      margin-bottom: 10px;
+    }
+    .faq-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 10px 0;
+      scroll-behavior: smooth;
+      position: relative;
+      z-index: 1;
+    }
+    .faq-container::-webkit-scrollbar {
+      display: none;
+    }
+    .faq-block {
+      min-width: 250px;
+      background: #1b2f3a;
+      padding: 20px;
+      border-radius: 10px;
+      scroll-snap-align: start;
+      flex-shrink: 0;
+    }
+    .faq-block h3 {
+      margin-top: 0;
+      font-size: 18px;
+    }
+    .faq-block p {
+      font-size: 14px;
+      color: #cfd8dc;
+    }
+    .checkout-button {
+      width: 100%;
+      background: hwb(49 0% 0%);
+      color: #003366;
+      border: none;
+      border-radius: 7.5px;
+      padding: 10px 0 10px 0;
+      font-size: 21px;
+      font-weight: bold;
+      margin-top: 10px;
+      cursor: pointer;
+      box-shadow: 0 2px 10px rgba(0,255,144,0.13);
+      transition: background 0.2s;
+      letter-spacing: 0.5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- Background video -->
+  <video class="bg-video" autoplay loop muted playsinline>
+    <source src="money.mp4" type="video/mp4">
+    
+  </video>
+
+  <h1>Your Wallet</h1>
+  <div class="wallet-summary">
+    <h2>Total Balance: $0</h2>
+    <p>Earned from Projects: $0</p>
+    <p>Earned from Referrals: $0</p>
+    <p>FunEARN Earning: $0</p>
+  </div>
+  <a href="payment.html" class="checkout-button">Checkout</a>
+  <h2>FAQ</h2>
+  <div class="faq-container" id="faqContainer">
+    <div class="faq-block">
+      <h3>Wallet</h3>
+      <p>All your earnings will show up here.</p>
+    </div>
+    <div class="faq-block">
+      <h3>Projects</h3>
+      <p>Projects will be listed for 7 days on the project dashboard.</p>
+    </div>
+    <div class="faq-block">
+      <h3>Payments</h3>
+      <p>You can withdraw money once the balance reaches the minimum amount.</p>
+    </div>
+    <div class="faq-block">
+      <h3>Bonuses</h3>
+      <p>Earn bonuses by completing tasks or referring friends.</p>
+    </div>
+    <div class="faq-block">
+      <h3>Support</h3>
+      <p>Contact support through the help button on the bottom right corner.</p>
+    </div>
+  </div>
+
+  <script>
+    const container = document.getElementById('faqContainer');
+    const scrollAmount = 270;
+    let autoScrollInterval = setInterval(() => {
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
+        container.scrollTo({ left: 0, behavior: 'smooth' }); // Reset to start
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }, 3000); // Scroll every 3 seconds
+  </script>
+</body>
+</html>

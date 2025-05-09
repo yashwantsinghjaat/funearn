@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update Profile</title>
+  <link rel="stylesheet" href="update-profile.css">
+</head>
+<body><video autoplay muted loop id="bg-video">
+    <source src="hello.mp4" type="video/mp4">
+    
+   </video>
+
+<div class="update-profile-container">
+  <div class="neon-rotating-border"></div>
+
+  <h2>Update Profile</h2>
+  
+  <form id="updateForm">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" placeholder="Enter new name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="profilePic">Profile Picture:</label>
+      <input type="file" id="profilePic" accept="image/*">
+      <div class="img-preview">
+        <img id="previewImage" src="http://pngimg.com/uploads/ironman/ironman_PNG72.png" alt="Profile Preview">
+      </div>
+    </div>
+
+    <button type="submit">Save Changes</button>
+  </form>
+</div>
+
+<script src="update-profile.js"></script>
+</body>
+</html>
+
